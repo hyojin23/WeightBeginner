@@ -1,0 +1,23 @@
+
+
+#protein {
+    width: 960px;
+    margin: 0px auto;
+}
+
+#gallery {
+    overflow: hidden;
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+#gallery li {
+    float: left;
+    margin: 0px;
+    padding: 10px;
+}
+
+#gallery img {
+    border: 5px solid #FFFFFF;
+}

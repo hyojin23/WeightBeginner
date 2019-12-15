@@ -1,0 +1,41 @@
+<!--헤더 파일-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+</head>
+<body>
+<div id="common_header">
+    <div id="logo" class="container">
+<!--        <h1><a href="http://localhost/main_page.html" ><span>헬린이</span></a></h1>-->
+        <h1><a href="https://weightbeginner.ga" ><span>헬린이</span></a></h1>
+    </div>
+    <!--로그인, 회원가입 태그-->
+    <div id="login"><a href="login_page.html"> </a><a href="sign_up_page.html"> </a>
+
+    </div>
+    <div id="header">
+        <div id="menu" class="container"> <!--메뉴 탭-->
+            <ul>
+                <li class="current_page_item"><a href="board.php" accesskey="1" title="">자유게시판</a></li>
+                <li><a href="used_item_board.php" accesskey="1" title="">운동용품 중고거래</a></li>
+<!--                <li><a href="page.html" accesskey="2" title="">보충제</a></li>-->
+
+                <!--세션이 존재할 경우(로그인 되었을 경우) 운동 배워봅시다 탭을 보여주고 아닌 경우 보여주지 않는다.-->
+                <?php if (isset($_SESSION['session_id']) || isset($_SESSION['admin_session_id'])) { ?>
+                <li><a href="chatting.php" accesskey="3" title="">오픈채팅</a></li>
+        <li><a href="learning_work_out.php" accesskey="4" title="">운동 배워봅시다</a></li>
+                <?php  } else {
+        // 세션값이 없을 경우
+        }?>
+
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

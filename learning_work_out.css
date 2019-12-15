@@ -1,0 +1,50 @@
+
+
+.list_ul {
+    margin-top: 50px;
+    margin-bottom: 100px;
+    text-align: center;
+
+}
+
+li {
+
+}
+
+.list {
+    margin-bottom: 50px;
+    display: inline-block;
+    margin-left: 50px;
+    margin-right: 50px;
+
+}
+
+/* 이미지 */
+.image {
+    list-style: none;
+    margin-bottom: 15px;
+    border: solid 1px gainsboro;
+}
+
+a {
+    /*color: blue;*/
+}
+
+/*게시판 하단 블록 부분*/
+
+#page_num {
+    font-size: 14px;
+    margin-left: 570px;
+    margin-top:30px;
+
+}
+#page_num ul li {
+    float: left;
+    margin-left: 10px;
+    text-align: center;
+    list-style: none;
+}
+.fo_re {
+    font-weight: bold;
+    color: mediumblue;
+}

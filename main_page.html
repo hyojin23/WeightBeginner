@@ -1,0 +1,221 @@
+
+
+<!DOCTYPE html>
+<!--
+Design by TEMPLATED
+http://templated.co
+Released for free under the Creative Commons Attribution License
+
+Name       : SquareAway
+Description: A four-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20130804
+
+-->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>헬린이</title> <!--웹사이트 탭에 뜨는 글씨-->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900|Open+Sans:400,300,600,700,800" rel="stylesheet" />
+    <!-- 팝업창이 뜨게 하는 자바스크립트 파일-->
+    <script type="text/javascript" src="cookie.js?ver=3"></script>
+
+    <!--jquery 사용을 위해 연결-->
+    <script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/js/jquery-ui.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/jquery-ui.css" />
+    <script type="text/javascript" src="/js/common.js?ver=34"></script>
+<!--    <script type="text/javascript" src="new.js?ver=3"></script>-->
+<!--        <link href="default.css" rel="stylesheet" type="text/css" media="all" />-->
+<!--        <link href="fonts.css" rel="stylesheet" type="text/css" media="all" />-->
+
+    <!--css 파일과 연결-->
+    <link rel="stylesheet" href="main_page.css?ver=5" type="text/css">
+    <!--[if IE 6]><link href="default_ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
+<style>
+</style>
+</head>
+
+<!--header 파일-->
+<?php include "main_page.php";
+include "header.html";
+?>
+
+<body>
+<!--메인페이지에서 팝업창을 띄우게 함-->
+<script type="text/javascript">
+    var noticeCookie = getCookie("popup_stop");  // getCookie함수에 name값을 넣어 쿠키의 value값 가져옴
+if (noticeCookie !== "check"){ // 쿠키의 value값이 "check" 가 아니면 (즉, 쿠키가 없으면)
+    console.log("윈도우 open");
+    // 팝업창을 연다 (url: 새창으로 열 주소 target: 새창의 이름 features: 속성
+    window.open('popup.html', "popup",'width=500, height=650, status=no, scrollbars= 0, toolbar=0, menubar=no');
+}</script>
+
+<!--include 하기 전 헤더-->
+<!--<div id="logo" class="container">-->
+<!--    <h1><a href="http://localhost/main_page.html" class="icon icon-spinner"><span>헬린이</span></a></h1>-->
+<!--</div>-->
+<!--&lt;!&ndash;<div id="login"><a href="login_page.html">로그인 </a><a href="sign_up_page.html">/ 회원가입</a>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;<script type="text/javascript">&ndash;&gt;-->
+<!--&lt;!&ndash;    function logout_click() {&ndash;&gt;-->
+<!--&lt;!&ndash;        alert("로그아웃되었습니다.");&ndash;&gt;-->
+<!--&lt;!&ndash;        history.go(-2);&ndash;&gt;-->
+
+<!--&lt;!&ndash;    }&ndash;&gt;-->
+
+<!--&lt;!&ndash;</script>&ndash;&gt;-->
+<!--<div id="header">-->
+<!--    <div id="menu" class="container">-->
+<!--        <ul>-->
+<!--            <li class="current_page_item"><a href="board.php" accesskey="1" title="">자유게시판</a></li>-->
+<!--            <li><a href="#" accesskey="1" title="">운동용품 중고거래</a></li>-->
+<!--            <li><a href="protein_page.html" accesskey="2" title="">보충제</a></li>-->
+<!--            <li><a href="#" accesskey="3" title="">운동 관련 영상</a></li>-->
+<!--        </ul>-->
+<!--    </div>-->
+<!--</div>-->
+
+<div id="page-wrapper">
+    <div id="banner" class="container"><a href="#"><img src="./images/main_dumbbell.jpg" width="1200" height="300" alt="" /></a></div> <!--메인의 덤벨 이미지-->
+    <div id="featured" class="container">
+        <div class="box"> <!--메인페이지의 소식과 내용-->
+            <div class="title">
+                <h2>헬린이 소식</h2>
+            </div>
+            <p>헬린이 오픈 기념 이벤트를 8월 1일 ~ 8월 31일까지 진행합니다. 헬린(인)이로 삼행시를 지어주세요! 추첨을 통해 마이프로틴 보충제를 선물로 드립니다.</p>
+        </div>
+        <div id="box1"> <a href="board.php"><img src="./images/keyboard.jpg" alt="" /></a> <!--자유게시판 키보드 이미지-->
+            <h2 class="subtitle">자유게시판</h2>
+            <p>운동과 그 외 주제에 대해 자유롭게 이야기할 수 있는 게시판입니다.</p>
+            <ul class="contact">
+                <li><a href="#" class="icon icon-facebook"><span></span></a></li>
+                <li><a href="#" class="icon icon-dribbble"><span>Pinterest</span></a></li>
+                <li><a href="#" class="icon icon-tumblr"><span>Google+</span></a></li>
+            </ul>
+        </div>
+        <div id="box2"> <a href="used_item_board.php"><img src="./images/gloves.jpeg" alt="" /></a>  <!--중고거래 장갑 이미지-->
+            <h2 class="subtitle">운동용품 중고거래</h2>
+            <p>웨이트 트레이닝 관련 용품들을 자유롭게 거래할 수 있는 게시판입니다.</p>
+            <ul class="contact">
+                <li><a href="#" class="icon icon-facebook"><span></span></a></li>
+                <li><a href="#" class="icon icon-dribbble"><span>Pinterest</span></a></li>
+                <li><a href="#" class="icon icon-tumblr"><span>Google+</span></a></li>
+            </ul>
+        </div>
+        <div id="box3"> <a href="#"><img src="./images/protein_powder.jpg" alt="" /></a> <!--보충제 탭 보충제 이미지-->
+            <h2 class="subtitle">보충제</h2>
+            <p>단백질 보충제에 대한 회원들의 평가와 한줄평을 볼 수 있습니다.</p>
+            <ul class="contact">
+                <li><a href="#" class="icon icon-facebook"><span></span></a></li>
+                <li><a href="#" class="icon icon-dribbble"><span>Pinterest</span></a></li>
+                <li><a href="#" class="icon icon-tumblr"><span>Google+</span></a></li>
+            </ul>
+        </div>
+        <!-- 세션이 존재하면 이미지를 클릭했을때 운동 배워봅시다 페이지로 연결되고, 존재하지 않으면(비로그인 상태) 연결되지 않는다.-->
+        <div id="box4"> <a href="#"><img src="./images/weight_barbell.jpg" alt="" /></a> <!--운동관련 영상 바벨 이미지-->
+            <h2 class="subtitle">운동 배워봅시다</h2>
+            <p>웨이트 트레이닝이 처음인 회원들이 운동에 관한 기초 지식을 얻을 수 있도록 관련 영상과 설명을 볼 수 있습니다.</p>
+            <ul class="contact">
+                <li><a href="#" class="icon icon-facebook"><span></span></a></li>
+                <li><a href="#" class="icon icon-dribbble"><span>Pinterest</span></a></li>
+                <li><a href="#" class="icon icon-tumblr"><span>Google+</span></a></li>
+            </ul>
+        </div>
+    </div>
+    <!--today_workout 테이블에서 인덱스 번호 기준으로 내림차순 정렬하여 가장 최근에 입력된 데이터(인덱스 번호가 가장 큰 것) 1개만 가져와 배열에 넣는다.-->
+    <?php $work_out = "select * from today_workout order by idx DESC limit 1";
+          $data = mysql_q($work_out);
+          $board = $data->fetch_array(); ?>
+
+
+
+
+
+    <div id="page" class="container">
+        <div id="content"> <!--추천운동 탭-->
+            <div class="title">
+                <h2>오늘의 추천 운동</h2><br>
+                <h3> : <?php echo $board['title']; ?> </h3>
+            </div>
+            <p>
+                <?php echo $board['content']; ?>
+            </p>
+            <!--누르면 네이버 운동설명으로 감-->
+<!--            <a href="https://terms.naver.com/entry.nhn?docId=938862&cid=51030&categoryId=51030" target="_blank" class="button icon icon-arrow-right">Learn More</a>-->
+            <a href= "<?php echo $board['website_src']; ?>" target="_blank" class="button icon icon-arrow-right">Learn More</a>
+        </div>
+        <div id="iframe"> <!--유튜브 영상을 넣기 위한 iframe-->
+<!--            <iframe width="588" height="350" src="https://www.youtube.com/embed/o6jUa3sQQFw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+            <iframe width="580" height="350" src="<?php echo $board['youtube_url']; ?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+<!--        <script>-->
+<!--            $(".modify").click(function () {-->
+<!--                console.log("hey");-->
+<!--                alert("hey");-->
+<!--                var obj = $(".today_workout_modify");-->
+<!--                obj.dialog({-->
+<!--                    modal: false,-->
+<!--                    position: { my: "center", at: "center", of: ".dap_lo" }, // 위치 지정-->
+<!--                });-->
+
+<!--            });-->
+<!--        </script>-->
+
+        <!--관리자 세션 아이디가 있으면 수정하기 버튼이 보임-->
+       <?php
+       if(isset($_SESSION['admin_session_id'])) { ?>
+        <!--수정 버튼-->
+        <div id="modify_button">
+            <a class="modify" href="javascript:void(0)" onclick="" >[수정하기]</a>
+        </div>
+        <?php  } ?>
+
+        <div class="today_workout_modify">
+
+        <form method="post">
+            제목: <input type="text" name="title" id="today_title" >
+            동영상 URL: <input type="text" name="youtube_url" id="youtube_url">
+            연결 웹사이트 주소: <input type="text" name="website_src" id="website_src">
+            내용: <textarea name="content" id="today_content"></textarea> <!--내용 입력란-->
+        </form>
+
+        </div>
+<!--        <div id="sidebar"><a href="#"><img src="images/pic05.jpg" width="588" height="250" alt="" /></a></div>-->
+    </div>
+</div>
+
+<!--inclue 하기 전 footer-->
+<!--<div id="footer-wrapper">-->
+<!--    <div id="footer" class="container">-->
+<!--        <div id="fbox1">-->
+<!--            <h2>Maecenas luctus</h2>-->
+<!--            <p>Nullam non wisi a sem semper eleifend. Donec mattis libero eget urna. Duis pretium velit ac mauris. Proin eu wisi suscipit nulla suscipit interdum.</p>-->
+<!--            <a href="#" class="button icon icon-arrow-right">Learn More</a> </div>-->
+<!--        <div id="fbox2">-->
+<!--            <h2>Integer gravida</h2>-->
+<!--            <p>Proin eu wisi suscipit nulla suscipit interdum. Nullam non wisi a sem semper eleifend. Donec mattis libero eget urna. Duis pretium velit ac mauris.</p>-->
+<!--            <a href="#" class="button icon icon-arrow-right">Learn More</a> </div>-->
+<!--        <div id="fbox3">-->
+<!--            <h2>Praesent scelerisque</h2>-->
+<!--            <p>Donec mattis libero eget urna. Duis pretium velit ac mauris. Proin eu wisi suscipit nulla suscipit interdum. Nullam non wisi a sem semper eleifend.</p>-->
+<!--            <a href="#" class="button icon icon-arrow-right">Learn More</a> </div>-->
+<!--        <div id="fbox4">-->
+<!--            <h2>Etiam rhoncus volutpat</h2>-->
+<!--            <p>Donec mattis libero eget urna. Duis pretium velit ac mauris. Proin eu wisi suscipit nulla suscipit interdum. Nullam non wisi a sem semper eleifend.</p>-->
+<!--            <a href="#" class="button icon icon-arrow-right">Learn More</a> </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<div id="copyright">-->
+<!--    <p>&copy; Untitled. All rights reserved. | Photos by <a href="http://fotogrph.com/">Fotogrph</a> | Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a>.</p>-->
+<!--</div>-->
+</body>
+</html>
+
+<?php
+include "footer.html";
+?> <!--footer 파일-->

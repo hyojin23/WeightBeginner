@@ -1,0 +1,552 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+    <title>게시물 목록페이지</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" type="text/css" href="bulletin_board_page.css?after" />
+    <style>
+
+        /************************************** layout **************************************/
+
+        /*!* 1024*768해상도에서 가로스크롤 금지 *!*/
+        /*body {*/
+        /*    overflow-x:hidden !important;*/
+        /*    font-family:Dotum, "돋움", Gulim, "굴림", Arial, Verdana, sans-serif, AppleGothic;*/
+        /*    !* font-family:Dotum, "돋움", Gulim, "굴림", Arial, Verdana, sans-serif, AppleGothic !important; *!*/
+        /*    !* font-family: Tahoma, Verdana, "나눔고딕", NanumGothic, "맑은 고딕", "Malgun Gothic", "함초롬돋움", "HCR Dotum", "돋움", Dotum, "굴림", Gulim, sans-serif; *!*/
+        /*}*/
+
+        /*!* wrap *!*/
+        /*#wrap {width:100%; min-width:1024px;}*/
+
+        /*!* header layout *!*/
+        /*#header {margin:0 auto; width:980px; height:81px; background:brown;}*/
+        /*#logo {position:relative; width:100%; height:81px;}*/
+        /*#logo h1 {position:absolute;}*/
+
+        /*!* container layout *!*/
+        /*#container {margin:0 auto; width:980px; padding:20px 0;}*/
+        /*#lnb {display:table-cell; width:210px; background:blanchedalmond;}*/
+        /*#content {display:table-cell;width:750px; padding:0 0 0 20px;}*/
+        /*!* //container layout *!*/
+
+        /*!* footer layout *!*/
+        /*#footer {clear:both; margin:0 auto; width:980px; height:106px; vertical-align:middle; background:gray;}*/
+        /*.footer_son {width:100%; height:38; background:url(../images/common/bg_footer_son.png) no-repeat;}*/
+        /*.footer_son p {margin:0 auto; font-family:"돋움", Gulim, "굴림", Arial, Verdana, sans-serif, AppleGothic !important; font-size:12px; color:#fff; font-weight:bold; text-align:center;}*/
+        /*!* //footer layout *!*/
+
+        /*!************************************** //layout **************************************!*/
+
+        /*!************************************** base **************************************!*/
+
+        /*!***** image *****!*/
+        /*img {vertical-align:top;}*/
+
+        /*!* base table style *!*/
+        /*table {border-collapse:collapse; width: 100%; border-spacing:0; border: 0 none;}*/
+        /*caption {text-align: left; color: #445a85; font-size font-weight: bold !important;}*/
+        /*th {*/
+        /*    height:25px;*/
+        /*    line-height:25px;*/
+        /*    padding:0 5px;*/
+        /*    border: 1px solid #d8d8d8;*/
+        /*    background-color: #f1f1f1;*/
+        /*    text-align: center;*/
+        /*    vertical-align: middle;*/
+        /*    color: #6a6a6a;*/
+        /*    font-size:12px;*/
+        /*    !* white-space: nowrap; 줄바꿈 금지 *!*/
+        /*    !* 강제로 줄바꿈(특수문자제외) word-break: break-all; *!*/
+        /*    !* 강제로 줄바꿈(특수문자포함) word-wrap:break-word; *!*/
+        /*}*/
+        /*td {*/
+        /*    height:25px;*/
+        /*    line-height:25px;*/
+        /*    padding:0 5px;*/
+        /*    border: 1px solid #e3e3e3;*/
+        /*    background-color: #fff;*/
+        /*    text-align: center;*/
+        /*    vertical-align: middle;*/
+        /*    color: #6a6a6a;*/
+        /*    font-size:12px;*/
+        /*    !* white-space: nowrap; 줄바꿈 금지 *!*/
+        /*    !* 강제로 줄바꿈(특수문자제외) word-break: break-all; *!*/
+        /*    !* 강제로 줄바꿈(특수문자포함) word-wrap:break-word; *!*/
+        /*}*/
+        /*td img, td input, td select {*/
+        /*    vertical-align:middle !important;*/
+        /*}*/
+        /*tfoot td {*/
+        /*    background-color: #fcedec !important;*/
+        /*}*/
+        /*table a, table a:link,*/
+        /*table a:visited {*/
+        /*    color:#6a6a6a !important;*/
+        /*    text-decoration:none !important;*/
+        /*}*/
+        /*table a:hover,*/
+        /*table a:active,*/
+        /*table a:focus {*/
+        /*    color:#dd1d56 !important;*/
+        /*    text-decoration:underline !important;*/
+        /*}*/
+
+        /*!***** pagination *****!*/
+        /*.title_section {padding-bottom:1px; color:#313131; font-size: 14px; font-weight:bold; line-height: 16px; font-family: Gulim, "굴림", "돋움", Arial, Verdana, sans-serif, AppleGothic; overflow: hidden; border-bottom:2px solid #363636;}*/
+        /*.title_section.caption {background:url(../images/common/icon_title_list.png) no-repeat; padding:0 0 3px 18px; margin-bottom:15px; color:#313131; font-size: 12px; font-weight:bold; line-height: 14px; font-family: Gulim, "굴림", "돋움", Arial, Verdana, sans-serif, AppleGothic; overflow: hidden; border-bottom:2px solid #ddd;}*/
+        /*.section {clear:both !important; margin-top:20px;}*/
+        /*.table_data {clear:both !important; border-top:2px solid #dd1d56 !important;}*/
+        /*.table_data.hover tr:hover td {background-color:#f1f1f1 !important;}*/
+        /*.pagination_top {clear:both; margin-top:20px; height:30px !important; line-height:30px !important; vertical-align:bottom !important;}*/
+        /*.pagination_top .select_pagination {font-family:Dotum, "돋움", Gulim, "굴림", Arial, Verdana, sans-serif, AppleGothic !important; color:#494949 !important; font-size:12px !important; float:left !important;}*/
+        /*.pagination_top .button_area {float:right !important;}*/
+        /*!***** //pagination *****!*/
+
+        /*!***** form *****!*/
+        /*input[type="text"],input[type="password"] {*/
+        /*    font-size: 12px;*/
+        /*    height:18px;*/
+        /*    line-height:18px;*/
+        /*    border:1px solid #d7d7d7;*/
+        /*    color:#7f7f7f;*/
+        /*    padding:0 5px;*/
+        /*    vertical-align:middle;*/
+        /*}*/
+        /*select {*/
+        /*    font-size:12px;*/
+        /*    height:20px;*/
+        /*    line-height:20px;*/
+        /*    border:1px solid #d7d7d7;*/
+        /*    color:#7f7f7f;*/
+        /*    !* padding: 0 5px; *!*/
+        /*    vertical-align: middle;*/
+        /*}*/
+        /*textarea {*/
+        /*    font-size:12px;*/
+        /*    border:1px solid #d7d7d7;*/
+        /*    color:#7f7f7f;*/
+        /*    overflow-y:auto;*/
+        /*}*/
+        /*!***** //form *****!*/
+
+        /*!************************************** //base **************************************!*/
+
+        /*!************************************** sub **************************************!*/
+
+        /*!***** board *****!*/
+        /*.content_visual {margin-bottom:20px; width:750px; height:100px; background:green;}*/
+        /*.board_search {margin-bottom:5px; text-align:right;}*/
+        /*.board_search .btn_search {*/
+        /*    height:20px;*/
+        /*    line-height:20px;*/
+        /*    padding:0 10px;*/
+        /*    vertical-align:middle;*/
+        /*    border: 1px solid #e9e9e9;*/
+        /*    background-color: #f7f7f7;*/
+        /*    font-size:12px;*/
+        /*    font-family:Dotum, "돋움";*/
+        /*    font-weight:bold;*/
+        /*    text-align:center;*/
+        /*    cursor:pointer;*/
+        /*}*/
+        /*.title_board_detail {margin:10px 0; font-size:14px; line-height:14px; color:#445a85; font-weight:bold;}*/
+        /*.title_board_write {margin:10px 0; font-size:14px; line-height:14px; color:#445a85; font-weight:bold;}*/
+
+        /*.board_list_table {width:100%;}*/
+        /*.board_list_table th {border-bottom:0;}*/
+        /*.board_list_table th:first-child {border-left:0;}*/
+        /*.board_list_table th:last-child {border-right:0;}*/
+        /*.board_list_table td:first-child {border-left:0;}*/
+        /*.board_list_table td:last-child {border-right:0;}*/
+
+        /*.board_detail_table {width:100%;}*/
+        /*.board_detail_table th:first-child {border-left:0;}*/
+        /*.board_detail_table th:last-child {border-right:0;}*/
+        /*.board_detail_table td:first-child {border-left:0;}*/
+        /*.board_detail_table td:last-child {border-right:0;}*/
+        /*.board_detail_table .body {margin:5px; line-height:18px;}*/
+
+        /*.board_write_table {width:100%;}*/
+        /*.board_write_table th:first-child {border-left:0;}*/
+        /*.board_write_table th:last-child {border-right:0;}*/
+        /*.board_write_table td:first-child {border-left:0;}*/
+        /*.board_write_table td:last-child {border-right:0;}*/
+        /*.board_write_table .editer {margin:5px;}*/
+
+        /*!* paginate *!*/
+        /*.paginate {padding:16px 0;text-align:center}*/
+        /*.paginate a,.paginate strong {*/
+        /*    display:inline-block;*/
+        /*    position:relative;_width !**!:17px;*/
+        /*    margin-right:1px;*/
+        /*    padding:2px 4px 3px;*/
+        /*    border:1px solid #fff;*/
+        /*    color:#000;*/
+        /*    font-size:11px;*/
+        /*    font-weight:bold;*/
+        /*    line-height:normal;*/
+        /*    text-decoration:none;*/
+        /*}*/
+        /*.paginate strong {*/
+        /*    border:1px solid #e9e9e9;*/
+        /*    color:#f23219 !important;*/
+        /*}*/
+        /*.paginate .pre {*/
+        /*    margin-right:6px;*/
+        /*    padding:4px 6px 2px 14px;*/
+        /*    _padding-bottom:1px;*/
+        /*    background:url(images/bullet_left_off.png) no-repeat 6px 5px !important;*/
+        /*    letter-spacing:-1px}*/
+        /*.paginate .next {*/
+        /*    margin-left:4px;*/
+        /*    padding:4px 14px 2px 6px;*/
+        /*    _padding-bottom:1px;*/
+        /*    background:url(../images/bullet_right_off.png) no-repeat 62px 5px !important;*/
+        /*    letter-spacing:-1px;*/
+        /*}*/
+        /*.paginate a.pre {background:url(../images/bullet_left_on.png) no-repeat 6px 5px !important}*/
+        /*.paginate a.next {background:url(../images/bullet_right_on.png) no-repeat 65px 5px !important}*/
+        /*.paginate .pre,.paginate .next{*/
+        /*    display:inline-block;*/
+        /*    position:relative;*/
+        /*    top:0;_top:-2px;_width !**!:75px;*/
+        /*    border:1px solid #e9e9e9;*/
+        /*    color:#ccc;*/
+        /*    font-family:"돋움", Dotum;*/
+        /*}*/
+        /*.paginate a.pre,.paginate a.next{color:#565656}*/
+        /*.paginate a:hover {border:1px solid #e9e9e9;background-color:#f7f7f7 !important}*/
+        /*!* //paginate *!*/
+
+        /*!* bottom button *!*/
+        /*.btn_bottom {margin:10px 0;}*/
+        /*.btn_bottom_left {float:left;}*/
+        /*.btn_bottom_left input[type="button"] {*/
+        /*    height:25px;*/
+        /*    line-height:25px;*/
+        /*    padding:0 10px;*/
+        /*    vertical-align:middle;*/
+        /*    border: 1px solid #e9e9e9;*/
+        /*    background-color: #f7f7f7;*/
+        /*    font-size:12px;*/
+        /*    font-family:Dotum, "돋움";*/
+        /*    font-weight:bold;*/
+        /*    text-align:center;*/
+        /*    cursor:pointer;*/
+        /*}*/
+        /*.btn_bottom_right {float:right;}*/
+        /*.btn_bottom_right input[type="button"] {*/
+        /*    height:25px;*/
+        /*    line-height:25px;*/
+        /*    padding:0 10px;*/
+        /*    vertical-align:middle;*/
+        /*    border: 1px solid #e9e9e9;*/
+        /*    background-color: #f7f7f7;*/
+        /*    font-size:12px;*/
+        /*    font-family:Dotum, "돋움";*/
+        /*    font-weight:bold;*/
+        /*    text-align:center;*/
+        /*    cursor:pointer;*/
+        /*}*/
+        /*!* //bottom button *!*/
+
+        /*!***** //board *****!*/
+
+        /*!************************************** //sub **************************************!*/
+    </style>
+</head>
+<body>
+<div id="common_header">
+<div id="logo" class="container">
+    <h1><a href="http://localhost/main_page.html" class="icon icon-spinner"><span>헬린이</span></a></h1>
+</div>
+<div id="login"><a href="login_page.html">로그인 </a><a href="sign_up_page.html">/ 회원가입</a>
+
+</div>
+<div id="header">
+    <div id="menu" class="container">
+        <ul>
+            <li class="current_page_item"><a href="bulletin_board_page.html" accesskey="1" title="">자유게시판</a></li>
+            <li><a href="#" accesskey="1" title="">운동용품 중고거래</a></li>
+            <li><a href="protein_page.html" accesskey="2" title="">보충제</a></li>
+            <li><a href="#" accesskey="3" title="">운동 관련 영상</a></li>
+        </ul>
+    </div>
+</div>
+</div>
+<!-- wrap -->
+<div id="wrap">
+
+    <!-- header -->
+    <div id="header1"></div>
+    <!-- //header -->
+
+    <!-- container -->
+    <div id="container">
+
+        <!-- lnb -->
+        <div id="lnb"></div>
+        <!-- //lnb -->
+
+        <!-- content -->
+        <div id="content">
+
+            <!-- content visual -->
+            <div class="content_visual"></div>
+            <!-- //content visual -->
+
+            <!-- board_search -->
+            <div class="board_search">
+                <select title="선택메뉴">
+                    <option selected="selected">전체</option>
+                    <option>옵션1</option>
+                    <option>옵션2</option>
+                </select>
+                <input type="text" title="검색어 입력박스" class="input_100" />
+                <input type="button" value="검색" title="검색버튼" class="btn_search" />
+            </div>
+            <!-- //board_search -->
+
+            <!-- board_area -->
+            <div class="board_area">
+                <form method="get">
+                    <fieldset>
+<!--                        <legend>Ses & Food 게시물 목록</legend>-->
+
+                        <!-- board list table -->
+                        <table summary="표 내용은 Ses & Food 게시물의 목록입니다." class="board_list_table">
+                            <caption>자유게시판</caption>
+                            <colgroup>
+                                <col width="5%" />
+                                <col width="50%" />
+                                <col width="10%" />
+                                <col width="15%" />
+                                <col width="10%" />
+                                <col width="10%" />
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th scope="col">번호</th>
+                                <th scope="col">제목</th>
+                                <th scope="col">작성자</th>
+                                <th scope="col">작성일</th>
+                                <th scope="col">조회</th>
+                                <th scope="col">추천</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>20</td>
+                                <td class="tleft"><span class="bold"><a href="#">게시글</a></span></td>
+                                <td>관리자</td>
+                                <td>2015-01-01</td>
+                                <td class="tright">1000</td>
+                                <td class="tright">100</td>
+                            </tr>
+                            <tr>
+                                <td>19</td>
+                                <td class="tleft"><span class="bold"><a href="#">게시글</a></span></td>
+                                <td>관리자</td>
+                                <td>2015-01-01</td>
+                                <td class="tright">1000</td>
+                                <td class="tright">100</td>
+                            </tr>
+                            <tr>
+                                <td>18</td>
+                                <td class="tleft"><span class="bold"><a href="#">게시글</a></span></td>
+                                <td>관리자</td>
+                                <td>2015-01-01</td>
+                                <td class="tright">1000</td>
+                                <td class="tright">100</td>
+                            </tr>
+                            <tr>
+                                <td>17</td>
+                                <td class="tleft"><span class="bold"><a href="#">게시글</a></span></td>
+                                <td>관리자</td>
+                                <td>2015-01-01</td>
+                                <td class="tright">1000</td>
+                                <td class="tright">100</td>
+                            </tr>
+                            <tr>
+                                <td>16</td>
+                                <td class="tleft"><span class="bold"><a href="#">게시글</a></span></td>
+                                <td>관리자</td>
+                                <td>2015-01-01</td>
+                                <td class="tright">1000</td>
+                                <td class="tright">100</td>
+                            </tr>
+                            <tr>
+                                <td>15</td>
+                                <td class="tleft"><span class="bold"><a href="#">게시글</a></span></td>
+                                <td>관리자</td>
+                                <td>2015-01-01</td>
+                                <td class="tright">1000</td>
+                                <td class="tright">100</td>
+                            </tr>
+                            <tr>
+                                <td>14</td>
+                                <td class="tleft"><span class="bold"><a href="#">게시글</a></span></td>
+                                <td>관리자</td>
+                                <td>2015-01-01</td>
+                                <td class="tright">1000</td>
+                                <td class="tright">100</td>
+                            </tr>
+                            <tr>
+                                <td>13</td>
+                                <td class="tleft"><span class="bold"><a href="#">게시글</a></span></td>
+                                <td>관리자</td>
+                                <td>2015-01-01</td>
+                                <td class="tright">1000</td>
+                                <td class="tright">100</td>
+                            </tr>   <tr>
+                                <td>12</td>
+                                <td class="tleft"><span class="bold"><a href="#">게시글</a></span></td>
+                                <td>관리자</td>
+                                <td>2015-01-01</td>
+                                <td class="tright">1000</td>
+                                <td class="tright">100</td>
+                            </tr>   <tr>
+                                <td>11</td>
+                                <td class="tleft"><span class="bold"><a href="#">게시글</a></span></td>
+                                <td>관리자</td>
+                                <td>2015-01-01</td>
+                                <td class="tright">1000</td>
+                                <td class="tright">100</td>
+                            </tr>
+
+
+
+                            <tr>
+                                <td>10</td>
+                                <td class="tleft"><span class="bold"><a href="#">게시글</a></span></td>
+                                <td>관리자</td>
+                                <td>2015-01-01</td>
+                                <td class="tright">1000</td>
+                                <td class="tright">100</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td class="tleft"><span class="bold"><a href="#">게시글</a></span></td>
+                                <td>관리자</td>
+                                <td>2015-01-01</td>
+                                <td class="tright">1000</td>
+                                <td class="tright">100</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td class="tleft"><span class="bold"><a href="#">게시글</a></span></td>
+                                <td>관리자</td>
+                                <td>2015-01-01</td>
+                                <td class="tright">1000</td>
+                                <td class="tright">100</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td class="tleft"><span class="bold"><a href="#">게시글</a></span></td>
+                                <td>관리자</td>
+                                <td>2015-01-01</td>
+                                <td class="tright">1000</td>
+                                <td class="tright">100</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td class="tleft"><span class="bold"><a href="#">게시글</a></span></td>
+                                <td>관리자</td>
+                                <td>2015-01-01</td>
+                                <td class="tright">1000</td>
+                                <td class="tright">100</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td class="tleft"><span class="bold"><a href="#">게시글</a></span></td>
+                                <td>관리자</td>
+                                <td>2015-01-01</td>
+                                <td class="tright">1000</td>
+                                <td class="tright">100</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td class="tleft"><span class="bold"><a href="#">게시글</a></span></td>
+                                <td>관리자</td>
+                                <td>2015-01-01</td>
+                                <td class="tright">1000</td>
+                                <td class="tright">100</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td class="tleft"><span class="bold"><a href="#">게시글</a></span></td>
+                                <td>관리자</td>
+                                <td>2015-01-01</td>
+                                <td class="tright">1000</td>
+                                <td class="tright">100</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td class="tleft"><span class="bold"><a href="#">게시글</a></span></td>
+                                <td>관리자</td>
+                                <td>2015-01-01</td>
+                                <td class="tright">1000</td>
+                                <td class="tright">100</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td class="tleft"><span class="bold"><a href="#">게시글</a></span></td>
+                                <td>관리자</td>
+                                <td>2015-01-01</td>
+                                <td class="tright">1000</td>
+                                <td class="tright">100</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <!-- //board list table -->
+
+                        <!--paginate start -->
+                        <div class="paginate">
+                            <a class="pre" href="#">이전페이지</a>
+                            <a href="#">1</a>
+                            <a href="#">2</a>
+                            <a href="#">3</a>
+                            <a href="#">4</a>
+                            <a href="#">5</a>
+<!--                            <strong>6</strong>-->
+                            <a href="#">6</a>
+                            <a href="#">7</a>
+                            <a href="#">8</a>
+                            <a href="#">9</a>
+                            <a href="#">10</a>
+                            <a href="#">11</a>
+                            <a class="next" href="#">다음페이지</a>
+                        </div>
+                        <!--//paginate end -->
+
+                        <!-- bottom button -->
+                        <div class="btn_bottom">
+                            <div class="btn_bottom_right">
+                                <input type="button" value="글쓰기" title="글쓰기" />
+                            </div>
+                        </div>
+                        <!-- //bottom button -->
+
+                    </fieldset>
+                </form>
+            </div>
+            <!-- //board_area -->
+
+        </div>
+        <!-- //content -->
+
+    </div>
+    <!-- //container -->
+
+    <!-- footer -->
+    <div id="footer"></div>
+    <!-- //footer -->
+
+</div>
+<!-- //wrap -->
+
+</body>
+</html>

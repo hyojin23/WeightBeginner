@@ -1,0 +1,25 @@
+
+.chat_log {
+    width: 95%;
+    height: 400px;
+    /*background-color: aliceblue;*/
+}
+
+.name {
+    width: 10%;
+    /*background-color: aliceblue;*/
+}
+
+.message {
+    width: 70%;
+    /*background-color: aliceblue;*/
+}
+
+.chat {
+    width: 10%;
+}
+
+#nick_name {
+    display: none;
+    margin-top: 10px;
+}

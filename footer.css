@@ -1,0 +1,84 @@
+/*********************************************************************************/
+/* Footer                                                                        */
+/*********************************************************************************/
+
+#common_footer
+{
+    margin: 0px;
+    padding: 0px;
+    background: #EFEFEF url(images/bg01.png) repeat;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 10pt;
+    font-weight: 400;
+    color: #8d8d8d;
+
+}
+
+#footer-wrapper
+{
+    padding: 6em 0em 6em 0em;
+    background: #f4f4f4;
+    border-bottom: 1px solid #EDEDED;
+    border-top: 1px solid #EDEDED;
+}
+
+#footer {
+    overflow: hidden;
+    color: #666666;
+}
+
+#footer h2
+{
+    letter-spacing: 0.10em;
+    padding-bottom: 1em;
+    font-size: 1.3em;
+    font-weight: 700;
+    color: #333;
+}
+
+#footer #fbox1 {
+    float: left;
+    width: 282px;
+    margin-right: 24px;
+}
+
+#footer #fbox2 {
+    float: left;
+    width: 282px;
+    margin-right: 24px;
+}
+
+#footer #fbox3 {
+    float: left;
+    width: 282px;
+}
+
+#footer #fbox4 {
+    float: right;
+    width: 282px;
+}
+
+p {
+    line-height: 180%;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+
+/*********************************************************************************/
+/* Copyright                                                                     */
+/*********************************************************************************/
+
+#copyright
+{
+    padding: 6em 0em;
+    font-size: 0.85em;
+    letter-spacing: 0.10em;
+    text-align: center;
+    color: #6A6A6A;
+}
+
+#copyright a
+{
+    color: #747474;
+}

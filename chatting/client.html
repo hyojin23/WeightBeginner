@@ -1,0 +1,90 @@
+<!-- client.html -->
+
+<?php include "main_page.php";
+include "header.html";
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Chat</title> <!-- 탭 제목-->
+    <link rel="stylesheet" href="/client.css?ver=2" type="text/css">
+
+
+</head>
+<body>
+<div>
+    <textarea id="chatLog" class="chat_log" readonly></textarea> <!--채팅 내용을 보여주는 채팅창-->
+</div>
+
+<form id="chat">
+    <input id="name" class="name" type="text" readonly> <!--유저 아이디 보여주는 곳-->
+    <input id="message" class="message" type="text"> <!--채팅 메세지 입력란-->
+    <input type="submit" class="chat" value="전송"/> <!--전송 버튼-->
+</form>
+
+<form id="nick_name">
+    <input id="user_name" class="user_name" type="text" placeholder="이름"> <!--다이얼로그에서 유저 아이디 입력란-->
+<!--    <input type="submit" class="user_name_submit" value="확인"/> &lt;!&ndash;전송 버튼&ndash;&gt;-->
+</form>
+
+<div id="box" class="box">
+<!--    <script src="/socket.io/socket.io.js"></script> &lt;!&ndash; socket.io를 사용하기 위해 socket.io.js를 가져옴 &ndash;&gt;-->
+<!--     실제 path에 socket.io.js 파일을 배치할 필요는 없음(socket.io가 서버 기동 시에 socket.io.js 라이브러리를 자동 생성하기 때문)-->
+    <script src=/socket.io/socket.io.js"></script> <!-- socket.io를 사용하기 위해 socket.io.js를 가져옴 -->
+    <script src="//code.jquery.com/jquery-1.11.1.js"></script>
+    <!--jquery 사용을 위해 연결-->
+<!--    <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>-->
+    <script type="text/javascript" src="jquery-ui.js?ver=1"></script>
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css?ver=1" />
+    <script>
+        $('#nick_name').dialog({
+            modal: true, // 뒷배경 어둡게 함
+            width: 400,
+            height: 180,
+            title: "채팅방에서 사용할 이름을 입력해주세요.",
+            buttons: {
+                "확인": function () {
+                    // 확인 버튼을 누르면 서버로 'connection' 이벤트와 입력된 유저의 닉네임을 전달
+                    socket.emit('connection', $('#user_name').val());
+                     $(this).dialog('close'); // 다이얼로그 종료
+                }
+            }
+        });
+
+        var socket = io(); // socket 변수 설정
+
+        $('#chat').on('submit', function (e) { //  jQuery의 'submit' event listener
+            // 전송 버튼을 누르면 서버로 'send message'이벤트와 유저 이름, 채팅메세지 전달
+            socket.emit('send message', $('#name').val(), $('#message').val());
+            $('#message').val(''); // 메세지창을 비움
+            $('#message').focus(); // 메세지창에 커서를 위치시킴
+            e.preventDefault(); // 이벤트 종료
+        });
+        socket.on('receive message', function (msg) { //  socket의 'receive message' event listener.
+            $('#chatLog').append(msg + '\n'); // 서버에서 'receive message' event가 emit되면 채팅창에 메시지 출력
+            $('#chatLog').scrollTop($('#chatLog')[0].scrollHeight); // 채팅창에 스크롤이 생기면 제일 하단에 focus 되도록 함
+
+        });
+        socket.on('change name', function (name) { // socket의 'change name' event listener.
+            $('#name').val(name); // 서버에서 'change name' event가 emit되면 유저 아이디를 name ex) user1, user2로 넣어 보여줌
+        });
+        socket.on('alert name', function (name) { //  socket의 'receive message' event listener.
+            var alert = name+'님이 입장하셨습니다.'; // 유저 입장 알림 메세지
+            $('#chatLog').append(alert + '\n'); // 서버에서 'receive message' event가 emit되면 채팅창에 메시지 출력
+        });
+    </script>
+</div>
+</body>
+</html>
+
+<!--
+io object는 서버가 만들거나 받는 event를 담당,  socket object는 개별의 클라이언트의 socket이 만들거나 받는 event를 담당
+'connection' event는 사이트 접속이 일어날때 서버가 받는 event이므로 io.on('connection', 함수)가 event lister
+'disconnect' event는 개별 클라이언트가 접속이 끊어졌을 때 해당 socket이 받는 event이므로 socket.on('disconnect', 함수)가 event listener
+사용자 정의 이벤트들 역시 개별 socket이 받는 event이므로 socket.on('disconnect', 함수)가 event listener
+클라이언트에서 socket을 통해 event를 서버로 전달: socket.emit
+서버가 event를 하나의 특정한 클라이언트에게만 전달: io.to(socket.id).emit
+서버가 event를 모든 클라이언트들에게 전달: io.emit-->
+
